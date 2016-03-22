@@ -1,0 +1,103 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Letter template for HMGU
+% March 2016
+% Based on letter template for ICube from Vincent Mazet
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+% Packages
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{helvet}
+
+% Layout
+\voffset -1in
+\topmargin 10mm
+\headheight 5mm
+\headsep 35mm
+\textheight 210mm
+\footskip 20mm
+\hoffset -1in
+\oddsidemargin 15mm
+\evensidemargin 15mm
+\textwidth 135mm
+\marginparsep -180mm
+\marginparwidth 350mm
+\parindent 0mm
+
+% Font sans-serif
+\renewcommand{\familydefault}{\sfdefault}
+
+% Colors
+\definecolor{grey}{RGB}{128,128,128}
+
+% Logos
+\newcommand{\hmguen}{\includegraphics[width=115mm]{hmgu_color_englisch.eps} \\[6ex]{\scriptsize\color{grey}Helmholtz Zentrum München - P.O. box 11 29 - 85758 Neuherberg}}
+
+% Headers and footers
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\hspace*{-10mm}\ifthenelse{\value{page}=1}{\hmguen}{}}
+\chead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\ifthenelse{\value{page}=1}{\marginbox}{}}
+
+% Margin
+\newcommand{\marginbox}{%
+	\vspace*{-240mm}\hspace*{105mm}\vbox{
+		\vtop to 5mm {\vfil\usebox{\institutebox}\vfil}
+		\vbox to 35mm {\vfil\usebox{\expeditorbox}\vfil}
+		\vbox to 5mm {\vfil}
+		\vbox to 5mm {\vfil\usebox{\datebox}\vfil}
+		\vbox to 30mm {\vfil}
+		\vbox to  35mm {\vfil\usebox{\researchcenterbox}\vfil}
+		\vbox to 10mm {\vfil}
+		\vbox to 20mm {\vfil\usebox{\leadingbox}\vfil}
+		\vbox to 10mm {\vfil}
+		\vbox to 30mm {\vfil\usebox{\bankbox}\vfil}
+  }
+}
+
+% Institute
+\newsavebox{\institutebox}
+\newcommand{\institute}[2]{\savebox{\institutebox}{\parbox{100mm}{%
+	\textbf{\scriptsize #1}}}}
+
+% Expeditor
+\newsavebox{\expeditorbox}
+\newcommand{\expeditor}[5]{\savebox{\expeditorbox}{\parbox{100mm}{%
+	{\scriptsize #1} \\{\scriptsize \textbf{#2 #3}}  \\{\scriptsize #4} \\[1ex]\scriptsize#5}}}
+
+% Info of the research center
+\newsavebox{\researchcenterbox}
+\newcommand{\adress}[1]{\savebox{\researchcenterbox}{\parbox{100mm}{%
+	\scriptsize\color{grey}\textbf{Helmholtz Zentrum München} \\German Research Center\\ for Environmental Health \\[2ex]#1 \\[2ex]+49 (0) 89 3187 (0) \\[4ex] info@helmholtz-muenchen.de \\www.helmholtz-muenchen.de}}}
+
+% Info about leading of the research center
+\newsavebox{\leadingbox}
+\savebox{\leadingbox}{\parbox{100mm}{%
+	\scriptsize\color{grey}\textsf{Aufsichtsratsvorsitzender: \\MinDir ‘in Bärbel Brumme-Bothe \\[4ex]Geschäftsführer: \\Prof. Dr. Günther Wess \\Dr. Nikolaus Blum \\Dr. Alfons Ehmsen}}}
+
+% Date
+\makeatletter
+\newsavebox{\datebox}
+\savebox{\datebox}{\parbox{100mm}{%
+	\textsf{\footnotesize\@date}}}
+\makeatother
+
+% Bank
+\newsavebox{\bankbox}
+\savebox{\bankbox}{\parbox{100mm}{%
+	\scriptsize\color{grey}\textsf{Registergericht: \\Amtsgericht München HRB 6466 \\USt-IdNr. DE 129521671 \\[4ex]Bankverbindung: \\Münchner Bank eG \\Konto-Nr. 2 158 620 \\BLZ 701 900 00 \\IBAN DE04 7019 0000 0002 1586 20 \\BIC GENODEF1M01}}}
+
+% Recipient
+\newcommand{\recipient}[1]{%
+	#1}
+
+\newcommand{\newpart}{\bigskip\bigskip\bigskip}
+\newcommand{\newparagraph}{\bigskip}

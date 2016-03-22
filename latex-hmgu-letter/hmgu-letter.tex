@@ -1,0 +1,100 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Letter with HMGU template
+% March 2016
+% Based on letter template for ICube from Vincent Mazet
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+
+% Load letter class (change the paper size if you need)
+\documentclass[a4paper,10pt,twosided]{letter}
+
+% English language is used in the letter
+\usepackage[english]{babel}
+
+% Set the date of the letter (use \today for today)
+\date{\today}
+
+% Layout file of the template
+\input{hmgu-style}
+
+
+\begin{document}
+	% Set the name of the institute
+	\institute{Institute for Epigenetics and Stem cells}
+
+	% Set the expeditor (arguments are: title, firstname, lastname, position, additional infos like phone, email, webpage, etc.)
+	\expeditor{Dr.}{Julien}{Pontabry}{Image analysis specialist}{%
+		+49 (0) 89 3187 3398\\
+		julien.pontabry@helmholtz-muenchen.de
+	}
+
+	% Address of the lab
+	\adress{%
+		Marchioninistraße 25\\
+		D-81377 München\\
+		Germany
+	}
+
+	% Recipient
+	\recipient{%
+		Dr. Julien Pontabry\\
+		Institute for Epigenetics and Stem cells (IES)\\
+		Marchioninistraße 25\\
+		D-81377 München\\
+		Germany
+	}
+	
+	\newpart
+
+	% Subject
+	Subject: template for HMGU-styled letter with \LaTeX{}
+	
+	\newpart
+
+	% Text
+	Dear Madam, Mister,
+
+	\newpart
+
+	the \LaTeX{} version of the template for HMGU-styled letter is configurable with the following elements:
+	\begin{itemize}
+		\item \texttt{$\backslash{}$institute\{\textit{name}\}} identify the name of the institute (or department);
+		\item \texttt{$\backslash{}$expeditor\{\textit{title}\}\{\textit{first-name}\}\{\textit{last-name}\}\{\dots\}} identify the author of the letter and is written in the margin;
+		\item \texttt{$\backslash{}$adress\{\dots\}} contains the address of the lab;
+		\item \texttt{$\backslash{}$recipient\{\dots\}} contains information about the recipient (name, compagny or lab, address, etc.);
+		\item \texttt{$\backslash{}$newpart} creates a large vertical space to separate parts of the letter;
+		\item \texttt{$\backslash{}$newparagraph} creates a small vertical space to separate paragraphs in the letter;
+		\item you can change the date by using the standard \texttt{$\backslash{}$date} command (use \texttt{$\backslash$today} for current date).
+	\end{itemize}
+
+	\newparagraph
+
+	This document needs the HMGU logo (file \textit{hmgu\_color\_englisch.eps}) and the following packages:
+	\begin{itemize}
+		\item \textit{fontenc} to create PDF with correct fonts (packages \textit{cm-super} or \textit{lmodern} are required to get a good result);
+		\item \textit{graphicx} to display images (here logos);
+		\item \textit{fancyhdr} to be able to modify headers and footers;
+		\item \textit{color} to provide colored fonts;
+		\item \textit{ifthen} to manage conditions;
+		\item \textit{helvet} to write with Helvetica font;
+		\item \textit{babel} with the english option to take into account the particularities of the language.
+	\end{itemize}
+	The file named \textit{hmgu-style.tex} is mandatory: it contains all the custom commands needed for compilation.
+
+	\newparagraph
+
+	Logos are included in EPS format. Therefore, the compilation has to be done with the following commands: \texttt{latex}, \texttt{dvitops} et \texttt{pstopdf}.
+
+	\newparagraph
+
+	This document corresponds to the version in date of \today. For all additional information, for bug report, or for suggestion, please send an email to julien.pontabry@helmholtz-muenchen.de.
+	
+	\newparagraph
+	
+	Your sincerely,
+
+	\newpart
+
+	Dr. Julien Pontabry
+\end{document}
