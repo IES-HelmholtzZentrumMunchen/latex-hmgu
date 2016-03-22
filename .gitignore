@@ -22,6 +22,8 @@
 *.mtc1
 *.out
 *.synctex.gz
+*.snm
+*.nav
 
 # For Mac OS
 .DS_Store
