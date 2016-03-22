@@ -1,0 +1,39 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Beamer theme with HMGU corporate design
+% March 2016
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+\mode<presentation>
+
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{frametitle}{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=0.14\paperheight]{}
+		\begin{tikzpicture}[remember picture,overlay]
+			\ifx\insertframesubtitle\@empty%
+				{\node[anchor=west,black,font=\large] at (0.01\paperwidth,0.07\paperheight) {\insertframetitle};}
+			\else%
+				{\node[anchor=west,black,font=\large] at (0.01\paperwidth,0.09\paperheight) {\insertframetitle};%
+				\node[anchor=west,darkgray,font=\small] at (0.01\paperwidth,0.04\paperheight) {\insertframesubtitle};}
+			\fi
+			\node[inner sep=0pt,anchor=east] at (0.97\paperwidth,0.07\paperheight) {\insertslidelogo};
+			\draw[thick,RulesColor] (0.01\paperwidth,0\paperheight) -- (0.99\paperwidth,0\paperheight);
+		\end{tikzpicture}
+	\end{beamercolorbox}
+}
+	
+\setbeamertemplate{footline}{%
+	\begin{beamercolorbox}[wd=\paperwidth,ht=0.05\paperheight]{}
+		\begin{tikzpicture}[remember picture,overlay]
+			\ifnum\thepage>1%
+				\draw[thick,RulesColor] (0.01\paperwidth,0.05\paperheight) -- (0.99\paperwidth,0.05\paperheight);
+				\node[anchor=west,darkgray,font=\tiny] at (0.01\paperwidth,0.024\paperheight) {\insertshortauthor\ |\ \insertshortinstitute};
+				\node[anchor=center,darkgray,font=\tiny] at (0.5\paperwidth,0.024\paperheight) {\insertshorttitle};
+				\node[anchor=east,darkgray,font=\tiny] at (0.99\paperwidth,0.024\paperheight) {\insertframenumber};
+			\fi
+		\end{tikzpicture}
+	\end{beamercolorbox}
+}
+
+\mode<all>

@@ -1,0 +1,29 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Beamer theme with HMGU corporate design
+% March 2016
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}	% we actually need tikz for painting the layout
+
+% Macros
+\newcommand{\affiliationlogo}[1]{\newcommand{\insertaffiliationlogo}{#1}}
+\newcommand{\slidelogo}[1]{\newcommand{\insertslidelogo}{\includegraphics[height=0.1\paperheight]{#1}}}
+\newcommand{\email}[1]{\newcommand{\insertemail}{#1}}
+\newcommand{\titleimage}[1]{\newcommand{\inserttitleimage}{\includegraphics[width=0.86\paperwidth,height=0.7\paperheight]{#1}}}
+
+% Themes
+\useinnertheme{hmgu}
+\useoutertheme{hmgu}
+\usecolortheme{hmgu}
+
+% Settings
+\setbeamertemplate{navigation symbols}{}
+
+\affiliationlogo{\includegraphics[width=0.6\paperwidth]{hmgu_color_englisch}}
+
+\mode<all>
