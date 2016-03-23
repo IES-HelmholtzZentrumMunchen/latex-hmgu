@@ -12,10 +12,10 @@
 	\begin{beamercolorbox}[wd=\paperwidth,ht=0.14\paperheight]{}
 		\begin{tikzpicture}[remember picture,overlay]
 			\ifx\insertframesubtitle\@empty%
-				{\node[anchor=west,black,font=\large] at (0.01\paperwidth,0.07\paperheight) {\insertframetitle};}
+				{\node[anchor=west,TitleColor,font=\large] at (0.01\paperwidth,0.07\paperheight) {\insertframetitle};}
 			\else%
-				{\node[anchor=west,black,font=\large] at (0.01\paperwidth,0.09\paperheight) {\insertframetitle};%
-				\node[anchor=west,darkgray,font=\small] at (0.01\paperwidth,0.04\paperheight) {\insertframesubtitle};}
+				{\node[anchor=west,TitleColor,font=\large] at (0.01\paperwidth,0.09\paperheight) {\insertframetitle};%
+				\node[anchor=west,TitleColor!80,font=\small] at (0.01\paperwidth,0.04\paperheight) {\insertframesubtitle};}
 			\fi
 			\node[inner sep=0pt,anchor=east] at (0.97\paperwidth,0.07\paperheight) {\insertslidelogo};
 			\draw[thick,RulesColor] (0.01\paperwidth,0\paperheight) -- (0.99\paperwidth,0\paperheight);
