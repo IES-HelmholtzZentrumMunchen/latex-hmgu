@@ -25,22 +25,56 @@
 
 
 \begin{document}
-	\maketitle[
-		width=0.95\paperwidth,
-		roundedcorners=false,
-		linewidth=0pt,
-		innersep=0pt,
-		titletotopverticalspace=3cm,
-		titletoblockverticalspace=2cm,
-		titlegraphictotitledistance=1cm
-	]
+	\maketitle
 	
-     \block{BlocktitleA}{Blocktext}
-     \begin{columns}
-         \column{0.3}
-         \block{BlocktitleB}{Blocktext}
-         \column{0.7}
-         \block{BlocktitleC}{Blocktext}
-         \note{Notetext}
-     \end{columns}
+	\block{Introduction}{}
+	\begin{columns}
+		\column{0.4}
+		\block{Requisites}{%
+			\innerblock{Required packages}{%
+				\begin{itemize}
+					\item \textit{graphicx} to display images and logos
+					\item \textit{tikz} to draw on slides
+				\end{itemize}
+			}
+			\innerblock{Required documents}{%
+				\begin{itemize}
+					\item \textit{beamerthemehmgu.sty}, \textit{beamerouterthemehmgu.sty}, \textit{beamerinnerthemehmgu.sty} and \textit{beamercolorthemehmgu.sty} contain all the settings and commands
+					\item \textit{hmgu\_color\_englisch.eps} image file for the Helmholtz Zentrum Logo
+					\item \textit{image\_example.jpg} only to build the example presentation
+				\end{itemize}
+			}	
+		}
+%		\note{Notetext}
+		\column{0.6}
+		\block{Available commands}{%
+			\innerblock{About the poster}{%
+				\begin{itemize}
+					\item \texttt{$\backslash$title} title of the presentation; appears on the first slide and at the bottom of each slide (short version available)
+					\item \texttt{$\backslash$subtitle} subtitle of the presentation; appears on the first slide
+					\item \texttt{$\backslash$date} date of the presentation; appears on the first slide
+				\end{itemize}
+			}
+			\innerblock{About the graphics}{%
+				\begin{itemize}
+					\item \texttt{$\backslash$slidelogo} logo to display on each slide on top right
+					\item \texttt{$\backslash$titleimage} image to display on the first slide
+				\end{itemize}	
+			}
+			\innerblock{About the authors}{%
+				\begin{itemize}
+					\item \texttt{$\backslash$author} name of the author; appears on the first slide and at the bottom of each slide (short version available)
+					\item \texttt{$\backslash$email} email of the author; appears on the first slide
+				\end{itemize}
+			}
+			\innerblock{About the institute}{%
+				\begin{itemize}
+					\item \texttt{$\backslash$institute} name of the institute; appears on the first slide, below the HMGU logo
+				\end{itemize}
+			}
+		}
+	\end{columns}
+	\block{Bugs / Infos}{%
+		This document corresponds to the version in date of \today. For all additional information, for bug report, or for suggestion, please send an email to \texttt{\url{julien.pontabry@helmholtz-muenchen.de}}.	
+	}
  \end{document}
