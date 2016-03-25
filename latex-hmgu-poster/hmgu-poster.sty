@@ -1,0 +1,88 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Poster with HMGU template
+% March 2016
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+\definecolorpalette{hmgucolorpalette}{
+	\definecolor{colorOne}{RGB}{42,137,188}
+	\definecolor{colorTwo}{RGB}{200,232,241}
+	\definecolor{colorThree}{RGB}{39,63,100}
+}
+
+\definecolorstyle{hmgucolorstyle}{
+	\definecolor{colorOne}{RGB}{42,137,188}
+	\definecolor{colorTwo}{RGB}{200,232,241}
+	\definecolor{colorThree}{RGB}{39,63,100}
+}{
+	% Background Colors
+	\colorlet{backgroundcolor}{white}
+	\colorlet{framecolor}{white}
+	% Title Colors
+	\colorlet{titlefgcolor}{colorThree}
+	\colorlet{titlebgcolor}{white}
+	% Block Colors
+	\colorlet{blocktitlebgcolor}{colorTwo}
+	\colorlet{blocktitlefgcolor}{black}
+	\colorlet{blockbodybgcolor}{colorTwo}
+	\colorlet{blockbodyfgcolor}{black}
+	% Innerblock Colors
+	\colorlet{innerblocktitlebgcolor}{white}
+	\colorlet{innerblocktitlefgcolor}{black}
+	\colorlet{innerblockbodybgcolor}{colorThree!30!white}
+	\colorlet{innerblockbodyfgcolor}{black}
+	% Note colors
+	\colorlet{notefgcolor}{black}
+	\colorlet{notebgcolor}{yellow!50!white}
+	\colorlet{noteframecolor}{black}
+}
+
+\definebackgroundstyle{hmgubackgroundstyle}{}
+
+\definetitlestyle{hmgutitlestyle}{
+	width=0.95\textwidth,
+	roundedcorners=0,
+	linewidth=0pt,
+	innersep=0pt,
+	titletotopverticalspace=3cm,
+	titletoblockverticalspace=1cm,
+	titlegraphictotitledistance=1cm
+}{}
+
+
+ \defineblockstyle{hmgublockstyle}{
+	titlewidthscale=1,
+	bodywidthscale=1,
+	titleleft,
+	titleoffsetx=0pt,
+	titleoffsety=0pt,
+	bodyoffsetx=0mm,
+	bodyoffsety=0mm,
+	bodyverticalshift=10mm,
+	roundedcorners=0,
+	linewidth=2pt,
+	titleinnersep=6mm,
+	bodyinnersep=1cm
+ }{
+     \draw[color=framecolor, fill=blockbodybgcolor,
+     rounded corners=\blockroundedcorners] (blockbody.south west)
+     rectangle (blocktitle.north east);
+}
+
+\definelayouttheme{hmgulayout}{
+	\usecolorstyle[colorPalette=hmgucolorpalette]{hmgucolorstyle}
+	\usebackgroundstyle{hmgubackgroundstyle}
+	\usetitlestyle{hmgutitlestyle}
+	\useblockstyle{hmgublockstyle}
+%	\useinnerblockstyle{hmguinnerblockstyle}
+%	\usenotestyle{hmgunotestyle}
+}
+
+\usetheme{hmgulayout}
+
+\settitle{%
+	\@titlegraphic\\[\TP@titlegraphictotitledistance]
+	\color{titlefgcolor}{\bfseries \Huge \sc \@title \par}
+	\vspace*{1em}
+	{\huge \@author \par}
+}

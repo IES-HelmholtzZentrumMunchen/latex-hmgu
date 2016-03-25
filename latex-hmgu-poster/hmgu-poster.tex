@@ -1,0 +1,46 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% Poster with HMGU template
+% March 2016
+% Infos and bugs julien.pontabry@helmholtz-muenchen.de
+
+\documentclass[
+	25pt,
+	a0paper,
+	portrait,
+	margin=1cm,
+	innermargin=2cm,
+	colspace=2cm,
+	blockverticalspace=2cm
+]{tikzposter}
+
+\input{hmgu-poster.sty}
+
+
+
+\title{HMGU corporate design poster with \LaTeX{}}
+\author{Julien Pontabry}
+\institute{Institute for Epigenetics and Stem cells}
+\titlegraphic{\includegraphics[width=0.5\paperwidth]{hmgu_color_englisch}}
+
+
+\begin{document}
+	\maketitle[
+		width=0.95\paperwidth,
+		roundedcorners=false,
+		linewidth=0pt,
+		innersep=0pt,
+		titletotopverticalspace=3cm,
+		titletoblockverticalspace=2cm,
+		titlegraphictotitledistance=1cm
+	]
+	
+     \block{BlocktitleA}{Blocktext}
+     \begin{columns}
+         \column{0.3}
+         \block{BlocktitleB}{Blocktext}
+         \column{0.7}
+         \block{BlocktitleC}{Blocktext}
+         \note{Notetext}
+     \end{columns}
+ \end{document}
