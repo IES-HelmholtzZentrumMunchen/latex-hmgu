@@ -6,8 +6,24 @@
 
 
 \usepackage{url}
+\usepackage{fancyhdr}
 
 \renewcommand{\familydefault}{\sfdefault}
+
+% Headers and footers
+\makeatletter
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0mm}
+\renewcommand{\footrulewidth}{0mm}
+\lhead{}
+\chead{}
+\lfoot{%
+	\vspace*{-4cm}%
+	\large \bfseries \@institute
+}
+\cfoot{}
+\rfoot{\vspace*{-5cm}\includegraphics[width=0.1\textwidth]{hg_blau_englisch}\hspace{2cm}}
+\makeatother
 
 \definecolorpalette{hmgucolorpalette}{
 	\definecolor{colorOne}{RGB}{42,137,188}
