@@ -4,6 +4,11 @@
 % March 2016
 % Infos and bugs julien.pontabry@helmholtz-muenchen.de
 
+
+\usepackage{url}
+
+\renewcommand{\familydefault}{\sfdefault}
+
 \definecolorpalette{hmgucolorpalette}{
 	\definecolor{colorOne}{RGB}{42,137,188}
 	\definecolor{colorTwo}{RGB}{200,232,241}
@@ -44,9 +49,9 @@
 	roundedcorners=0,
 	linewidth=0pt,
 	innersep=0pt,
-	titletotopverticalspace=3cm,
-	titletoblockverticalspace=1cm,
-	titlegraphictotitledistance=1cm
+	titletotopverticalspace=30mm,
+	titletoblockverticalspace=80mm,
+	titlegraphictotitledistance=10mm
 }{}
 
 
@@ -54,19 +59,53 @@
 	titlewidthscale=1,
 	bodywidthscale=1,
 	titleleft,
-	titleoffsetx=0pt,
-	titleoffsety=0pt,
+	titleoffsetx=0mm,
+	titleoffsety=0mm,
 	bodyoffsetx=0mm,
 	bodyoffsety=0mm,
-	bodyverticalshift=10mm,
+	bodyverticalshift=0mm,
 	roundedcorners=0,
 	linewidth=2pt,
-	titleinnersep=6mm,
-	bodyinnersep=1cm
+	titleinnersep=10mm,
+	bodyinnersep=10mm
  }{
      \draw[color=framecolor, fill=blockbodybgcolor,
      rounded corners=\blockroundedcorners] (blockbody.south west)
      rectangle (blocktitle.north east);
+}
+
+\defineinnerblockstyle{hmguinnerblockstyle}{
+	titlewidthscale=1,
+	bodywidthscale=1,
+	titleleft,
+	titleoffsetx=0mm,
+	titleoffsety=0mm,
+	bodyoffsetx=0mm,
+	bodyoffsety=0mm,
+	bodyverticalshift=-5mm,
+	roundedcorners=0,
+	linewidth=2pt,
+	titleinnersep=5mm,
+	bodyinnersep=10mm
+}{}
+
+\definenotestyle{hmgunotestyle}{
+	targetoffsetx=0mm,
+	targetoffsety=0mm,
+	angle=45,
+	radius=8cm,
+	width=6cm,
+	connection=true,
+	rotate=0,
+	roundedcorners=0,
+	linewidth=1pt,
+	innersep=5mm
+}{
+	\ifNoteHasConnection
+		\draw[thick] (notecenter) -- (notetarget) node{$\bullet$};
+	\fi
+	\draw[draw=notebgcolor,fill=notebgcolor,rotate=\noterotate]
+		(notecenter.south west) rectangle (notecenter.north east);
 }
 
 \definelayouttheme{hmgulayout}{
@@ -74,15 +113,15 @@
 	\usebackgroundstyle{hmgubackgroundstyle}
 	\usetitlestyle{hmgutitlestyle}
 	\useblockstyle{hmgublockstyle}
-%	\useinnerblockstyle{hmguinnerblockstyle}
-%	\usenotestyle{hmgunotestyle}
+	\useinnerblockstyle{hmguinnerblockstyle}
+	\usenotestyle{hmgunotestyle}
 }
 
 \usetheme{hmgulayout}
 
 \settitle{%
-	\@titlegraphic\\[\TP@titlegraphictotitledistance]
-	\color{titlefgcolor}{\bfseries \Huge \sc \@title \par}
+	\hspace*{-35mm}\@titlegraphic\\[\TP@titlegraphictotitledistance]
+	\color{titlefgcolor}{\bfseries \Huge \@title \par}
 	\vspace*{1em}
 	{\huge \@author \par}
 }
