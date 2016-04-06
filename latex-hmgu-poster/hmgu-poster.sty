@@ -14,15 +14,15 @@
 \makeatletter
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0mm}
-\renewcommand{\footrulewidth}{0mm}
+\renewcommand{\footrulewidth}{1.5mm} 
 \lhead{}
 \chead{}
 \lfoot{%
 	\vspace*{-4cm}%
 	\large \bfseries \@institute
 }
-\cfoot{}
-\rfoot{\vspace*{-5cm}\includegraphics[width=0.1\textwidth]{hg_blau_englisch}\hspace{2cm}}
+\cfoot{\begin{tikzpicture}[remember picture,overlay]\fill[white] (-100,0) rectangle(100,1.4);\end{tikzpicture}}
+\rfoot{\vspace*{-5.5cm}\textcolor{colorThree}{\footrule}\vspace*{0.5cm}\includegraphics[width=0.1\textwidth]{hg_blau_englisch}\begin{tikzpicture}[remember picture,overlay]\fill[white] (-4,-1) rectangle(2,0.5);\end{tikzpicture}\hspace{2cm}}
 \makeatother
 
 \definecolorpalette{hmgucolorpalette}{
@@ -65,8 +65,8 @@
 	roundedcorners=0,
 	linewidth=0pt,
 	innersep=0pt,
-	titletotopverticalspace=30mm,
-	titletoblockverticalspace=80mm,
+	titletotopverticalspace=20mm,
+	titletoblockverticalspace=60mm,
 	titlegraphictotitledistance=10mm
 }{}
 
