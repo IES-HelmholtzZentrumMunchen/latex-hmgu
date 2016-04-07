@@ -21,14 +21,14 @@
 		\begin{tikzpicture}[remember picture,overlay]
 			\node[inner sep=0pt,anchor=north] at (0.5\paperwidth,0.98\paperheight) {\inserttitleimage};
 			\fill[BlocksColor] (0.03\paperwidth,0.4\paperheight) rectangle(0.97\paperwidth,0.65\paperheight);
-			\node[anchor=north] at (0.5\paperwidth,0.6\paperheight) {\large\bfseries\inserttitle};
-			\node[anchor=north] at (0.5\paperwidth,0.52\paperheight) {\small\insertsubtitle};
-			\node[inner sep=0pt,anchor=west] at (-0.02\paperwidth,0.15\paperheight) {\insertaffiliationlogo};
-			\node[anchor=west,black,font=\footnotesize] at (0.02\paperwidth,0.08\paperheight) {\bfseries\insertinstitute};
+			\node[TitleColor,anchor=north] at (0.5\paperwidth,0.6\paperheight) {\large\bfseries\inserttitle};
+			\node[TitleColor,anchor=north] at (0.5\paperwidth,0.52\paperheight) {\itshape\small\insertsubtitle};
+			\node[inner sep=0pt,anchor=west] at (-0.02\paperwidth,0.16\paperheight) {\insertaffiliationlogo};
+			\node[anchor=west,black,font=\footnotesize] at (0.02\paperwidth,0.07\paperheight) {\bfseries\insertinstitute};
 			\draw[RulesColor,thick] (0.5\paperwidth,0.02\paperheight) -- (0.5\paperwidth,0.22\paperheight);
-			\node[anchor=west,black,font=\small] at (0.55\paperwidth,0.17\paperheight) {\insertauthor};
-			\node[anchor=west,black,font=\scriptsize] at (0.55\paperwidth,0.12\paperheight) {\insertemail};
-			\node[anchor=west,black,font=\small] at (0.55\paperwidth,0.05\paperheight) {\insertdate};
+			\node[anchor=west,black,font=\small] at (0.55\paperwidth,0.18\paperheight) {\insertauthor};
+			\node[anchor=west,black,font=\scriptsize] at (0.55\paperwidth,0.14\paperheight) {\insertemail};
+			\node[anchor=west,black,font=\small] at (0.55\paperwidth,0.06\paperheight) {\insertdate};
 		\end{tikzpicture}
 	\end{beamercolorbox}
 }
