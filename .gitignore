@@ -24,6 +24,13 @@
 *.synctex.gz
 *.snm
 *.nav
+*.bcf
+
+# For output
+*.ps
+
+# For TexStudio
+*.run.xml
 
 # For Mac OS
 .DS_Store
