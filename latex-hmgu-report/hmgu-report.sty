@@ -1,0 +1,492 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
+%
+% structure.tex
+% Structure file for lab report
+% Julien Pontabry
+% October 2015
+%
+
+% ---- Document format -----------------------------------------------------------------------------
+
+% Class
+\documentclass[a4paper,12pt,oneside]{report}
+
+% Paper size
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total  = {210mm, 297mm},
+	margin = 25mm
+}
+
+% Language
+\usepackage[english]{babel}
+
+% Draft switches
+\usepackage{ifdraft}	% for draft option detection
+\usepackage{verbatim}	% for the comment environement
+
+\newif\ifshow
+\ifoptiondraft{%
+	\showfalse
+}{%
+	\showtrue
+}
+
+\let\oldfigure\figure
+\let\oldendfigure\endfigure
+
+\renewenvironment{figure}{%
+	\ifshow\expandafter\oldfigure%
+	\else\comment%
+	\fi
+}{%
+	\ifshow\oldendfigure%
+	\else\endcomment%
+	\fi
+}
+
+\let\oldtable\table
+\let\oldendtable\endtable
+
+\renewenvironment{table}{%
+	\ifshow\expandafter\oldtable%
+	\else\comment%
+	\fi
+}{%
+	\ifshow\oldendtable%
+	\else\endcomment%
+	\fi
+}
+
+% ---- Text format ---------------------------------------------------------------------------------
+
+% Input encoding (UTF-8)
+\usepackage[utf8]{inputenc}
+
+% Output encoding (for accentuated characters)
+\usepackage[T1]{fontenc}
+
+% For typographic fine tuning
+\usepackage{microtype}
+
+% For text colouring
+\usepackage{color}
+
+\definecolor{TitleColor}{RGB}{39,63,100}
+\definecolor{RulesColor}{RGB}{42,137,188}
+
+% Correct URL display
+\usepackage{url}
+
+% Custom enumerations
+\usepackage{enumitem}
+
+% ---- Sections format -----------------------------------------------------------------------------
+
+% Allows little tweak on sections displays
+\usepackage{titlesec}
+
+% Allows to change directly the font size (only for template design)
+\usepackage{fix-cm}
+
+% Format chapters style
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\hspace{-13.5mm}{\fontsize{40}{0}\selectfont\textcolor{RulesColor}{\thechapter}}}{5mm}{}
+
+% Unnumbered chapters
+\newcommand{\unnumberedchapter}[2]{%
+	\clearpage\phantomsection
+	\addcontentsline{toc}{chapter}{#1}
+	#2
+}
+
+% ---- Cover format --------------------------------------------------------------------------------
+
+% Define subtitle element
+\makeatletter
+\newcommand\subtitle[1]{\renewcommand\@subtitle{#1}}
+\newcommand\@subtitle{}
+\newcommand\institute[1]{\renewcommand\@institute{#1}}
+\newcommand\@institute{}
+\newcommand\affiliationlogo[1]{\renewcommand\@affiliationlogo{#1}}
+\newcommand\@affiliationlogo{}
+\makeatother
+
+% Layout of the title page
+\makeatletter
+\def\maketitle{%
+	\newlength{\drop}
+	\setlength{\drop}{0.1\textheight}
+	\null
+	\thispagestyle{empty}%
+	\vspace*{\drop}
+	\begin{raggedleft}\leavevmode
+		\normalfont
+		{\Huge\bfseries\textcolor{TitleColor}{\@title}}\\[\baselineskip]
+		{\Large\itshape\textcolor{TitleColor}{\@subtitle}}\\[1.5\baselineskip]
+		{\large \@author}\\[3\baselineskip]
+		{\large \@date}\par
+	\end{raggedleft}%
+	\vfill
+	\begin{center}
+		{\includegraphics[height=1.5cm]{\@affiliationlogo}}\\[\baselineskip]
+		{\bfseries\@institute}
+	\end{center}
+	\null
+	\cleardoublepage
+}
+\makeatother
+
+% ---- Head/Foot -----------------------------------------------------------------------------------
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{%
+	\markboth{\thechapter.\ \textsc{#1}}{}}
+
+\makeatletter
+\lhead{\nouppercase{\small \leftmark}}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\makeatother
+
+% ---- Figures -------------------------------------------------------------------------------------
+
+% Images
+\usepackage[dvips]{graphicx}
+
+% Captions and multiple figures
+\usepackage{caption}
+\usepackage{subcaption}
+
+\captionsetup[figure]{
+	% Options for captions
+	style           = default,
+	font            = footnotesize,
+	labelfont       = small,
+	singlelinecheck = true,
+	indention       = 0pt,
+	hangindent      = 0pt,
+	width           = \hsize,
+	parskip         = 0pt,
+	format          = default,
+	margin          = 2pt,
+	justification   = justified,
+	labelformat     = simple,
+	labelsep        = period,
+	position        = bottom,
+}
+
+\captionsetup[table]{
+	% Options for captions
+	style           = default,
+	font            = footnotesize,
+	labelfont       = small,
+	singlelinecheck = true,
+	indention       = 0pt,
+	hangindent      = 0pt,
+	width           = \hsize,
+	parskip         = 0pt,
+	format          = default,
+	margin          = 2pt,
+	justification   = justified,
+	labelformat     = simple,
+	labelsep        = period,
+	position        = bottom,
+}
+
+\captionsetup[subfloat]{
+	% Options for captions
+	font         = footnotesize,
+	labelformat  = parens,
+	labelsep     = space,
+	% Options for referencing
+	subrefformat = parens,
+}
+
+% Drawing
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+
+% ---- Tables --------------------------------------------------------------------------------------
+
+% Multiple lines
+\usepackage{multirow}
+
+% Input csv files
+\usepackage{csvsimple} % SUPPRIMER
+\usepackage{pgfplotstable}
+
+\pgfplotstableset{
+	fixed zerofill                 = true,
+	col sep                        = comma,
+	header                         = true,
+	format                         = auto,
+	set thousands separator        = {$\,$},
+	highlight col max/.code 2 args = {
+		\findtablemax{#1}{#2}{\maxval}
+		\edef\setstyles{
+			\noexpand\pgfplotstableset{
+				every row \maxval\noexpand\space column #2/.style = {
+					postproc cell content/.append style = {
+						/pgfplots/table/@cell content/.add = {$\noexpand\bf}{$}
+					},
+				}
+			}
+		}\setstyles
+	},
+	highlight col min/.code 2 args = {
+		\findtablemin{#1}{#2}{\minval}
+		\edef\setstyles{\noexpand\pgfplotstableset{
+			every row \minval\noexpand\space column #2/.style = {
+				postproc cell content/.append style = {
+					/pgfplots/table/@cell content/.add = {$\noexpand\bf}{$}
+				},
+			}}
+		}\setstyles
+	},
+	highlight row max/.code 2 args = {
+		\pgfmathtruncatemacro\rowindex{#2-1}
+		\pgfplotstabletranspose{\transposed}{#1}
+		\findtablemax{\transposed}{\rowindex}{\maxval}
+		\edef\setstyles{
+			\noexpand\pgfplotstableset{
+				every row \rowindex\space column \maxval\noexpand/.style = {
+					postproc cell content/.append style = {
+						/pgfplots/table/@cell content/.add = {$\noexpand\bf}{$}
+					},
+				}
+			}
+		}\setstyles
+	},
+	highlight row min/.code 2 args = {
+		\pgfmathtruncatemacro\rowindex{#2-1}
+		\pgfplotstabletranspose{\transposed}{#1}
+		\findtablemin{\transposed}{\rowindex}{\minval}% ignorer les non-numériques
+		\edef\setstyles{
+			\noexpand\pgfplotstableset{
+				every row \rowindex\space column \minval\noexpand/.style = {
+					postproc cell content/.append style = {
+						/pgfplots/table/@cell content/.add = {$\noexpand\bf}{$}
+					},
+				}
+			}
+		}\setstyles
+	}
+}
+
+\makeatletter
+\long\def\pgfplotstabletypeset@opt@collectarg[#1]#2{
+	\pgfplotstable@isloadedtable{#2}%
+	{\pgfplotstabletypeset@opt@[#1]{#2}}%
+	{\pgfplotstabletypesetfile@opt@[#1]{#2}}%
+}
+\makeatother
+
+% \findtablemax{table}{column}{maxRowIndex}
+\newcommand{\findtablemax}[3]{
+	\pgfplotstablevertcat{\findtablemaxtmp}{#1}
+	\pgfplotstablecreatecol[
+		create col/expr = {\pgfplotstablerow}
+	]{Row}{\findtablemaxtmp}
+	\pgfplotstablesort[
+		sort key = {#2},
+		sort cmp = {float >}
+	]{\findtablemaxtmpsorted}{\findtablemaxtmp}
+	\pgfplotstablegetelem{0}{Row}\of{\findtablemaxtmpsorted}
+	\pgfmathtruncatemacro{#3}{\pgfplotsretval}
+	\pgfplotstableclear{\findtablemaxtmp}
+}
+
+% \findtablemin{table}{column}{minRowIndex}
+\newcommand{\findtablemin}[3]{
+	\pgfplotstablevertcat{\findtablemintmp}{#1}
+	\pgfplotstablecreatecol[
+		create col/expr = {\pgfplotstablerow}
+	]{Row}{\findtablemintmp}
+	\pgfplotstablesort[
+		sort key = {#2},
+		sort cmp = {float <}
+	]{\findtablemintmpsorted}{\findtablemintmp}
+	\pgfplotstablegetelem{0}{Row}\of{\findtablemintmpsorted}
+	\pgfmathtruncatemacro{#3}{\pgfplotsretval}
+	\pgfplotstableclear{\findtablemintmp}
+}
+
+% Define styles for results tables
+\csvstyle{evaluation results}{
+	head to column names,
+	before reading = \centering\sisetup{
+		round-mode      = places,
+		round-precision = 2,
+		detect-weight,
+		detect-shape,
+		detect-mode},
+	tabular        = {lrrrr},	
+	table head     = \toprule{Image} & {CellProfiler} & {Farsight} & {ilastik} & {MINS}\\\midrule,
+	table foot     = \bottomrule
+}
+
+\csvstyle{evaluation results centred}{
+	head to column names,
+	before reading = \centering\sisetup{
+		round-mode      = places,
+		round-precision = 2,
+		detect-weight,
+		detect-shape,
+		detect-mode},
+	tabular        = {lcccc},	
+	table head     = \toprule{Image} & {CellProfiler} & {Farsight} & {ilastik} & {MINS}\\\midrule,
+	table foot     = \bottomrule
+}
+
+% ---- Plots ---------------------------------------------------------------------------------------
+
+\usepackage{pgfplots}
+
+\pgfplotsset{
+	compat = newest,
+}
+
+\usepgfplotslibrary{units}
+\usepgfplotslibrary{groupplots}
+
+% Styles for plots
+\pgfplotsset{
+	comparison plots/.style = {
+		grid               = major,
+		xtick              = {1,2,3,4,5,6},
+		xticklabels        = {2C/cov.,4C/cov.,4C/drop,8C/cov.,8C/drop,Morula/cov.},
+		xticklabel style   = {rotate=45, anchor=north east},
+		y tick label style = {
+			/pgf/number format/.cd,
+			fixed,
+			fixed zerofill,
+			precision = 1,
+			/tikz/.cd
+		},
+		tick scale binop   = \times,
+	},
+	histogram plots/.style = {
+		grid           = none,
+		width          = 1.425\textwidth,
+		xmin           = 0,
+		xmax           = 255,
+		xlabel         = {},
+		x unit         = {},
+		xtick          = {0,255},
+		xticklabels    = {},
+		ymin           = 0,
+		ylabel         = {},
+		y unit         = {},
+		yticklabels    = {},
+		scaled y ticks = false,
+	}
+}
+
+% ---- Maths ---------------------------------------------------------------------------------------
+
+% Useful structures
+\usepackage{amsmath}
+
+% Symbols and fonts
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% Nice fractions in text
+\usepackage{xfrac}
+
+% Number formatting
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{siunitx}
+
+\sisetup{
+	inter-unit-product      = \ensuremath{{}\cdot{}},
+	per-mode                = reciprocal,
+	separate-uncertainty    = true,
+	table-align-uncertainty = false,
+	table-number-alignment  = center,
+	round-mode              = places,
+	round-precision         = 2,
+	round-integer-to-decimal,
+	scientific-notation     = fixed,
+	fixed-exponent          = 0
+}
+
+\DeclareSIUnit\pixels{pixels}
+\DeclareSIUnit\voxels{voxels}
+
+% Useful shortcuts
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\ZnZ}[1]{\frac{\Z}{#1\Z}}
+\newcommand{\ZnZtext}[1]{\sfrac{\Z}{#1\Z}}
+\newcommand{\NnN}[1]{\frac{\N}{#1\N}}
+\newcommand{\NnNtext}[1]{\sfrac{\N}{#1\N}}
+\newcommand{\Matrices}[2]{\mathcal{M}_{#1 \times #2}}
+
+% ---- Algorithms ----------------------------------------------------------------------------------
+
+\usepackage{algorithm2e}
+
+% ---- Bibliography --------------------------------------------------------------------------------
+
+\usepackage[
+	language     = english,
+	style        = authoryear-comp,
+	maxbibnames  = 1000,
+	minbibnames  = 1,
+	maxcitenames = 1,
+	mincitenames = 1,
+	backend      = biber,
+	uniquename   = false,
+	uniquelist   = false,
+	doi          = false,
+	url          = false
+]{biblatex}
+
+\setlength{\bibitemsep}{5pt}
+
+% ---- PDF -----------------------------------------------------------------------------------------
+
+\usepackage{hyperref}
+
+\definecolor{citations}{rgb}{0, 0, 0.4}
+\definecolor{links}{rgb}{0.4, 0, 0}
+
+\makeatletter
+\hypersetup{
+	final,
+	bookmarks    = true,
+	unicode      = true,
+	pdffitwindow = true,
+	pdfnewwindow = false,
+	colorlinks   = true,
+	linkcolor    = links,
+	citecolor    = citations,
+	urlcolor     = black,
+	pdftitle     = {\@title},
+	pdfauthor    = {\@author},
+	pdfsubject   = {},
+}
+\makeatother
+
+% For nice url display
+\usepackage{breakurl}
+
+% Referencing
+\usepackage[noabbrev]{cleveref}
+
+\endinput
