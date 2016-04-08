@@ -10,7 +10,7 @@
 % ---- Document format -----------------------------------------------------------------------------
 
 % Class
-\documentclass[a4paper,12pt,oneside]{report}
+\documentclass[a4paper,12pt,oneside,draft]{report}
 
 % Paper size
 \usepackage{geometry}
@@ -120,19 +120,22 @@
 	\setlength{\drop}{0.1\textheight}
 	\null
 	\thispagestyle{empty}%
-	\vspace*{\drop}
+	\begin{raggedright}
+		{\includegraphics[height=1.5cm]{\@affiliationlogo}}\\[0.5\baselineskip]
+		{\bfseries\@institute}
+	\end{raggedright}
+	\vfill
 	\begin{raggedleft}\leavevmode
 		\normalfont
 		{\Huge\bfseries\textcolor{TitleColor}{\@title}}\\[\baselineskip]
-		{\Large\itshape\textcolor{TitleColor}{\@subtitle}}\\[1.5\baselineskip]
-		{\large \@author}\\[3\baselineskip]
-		{\large \@date}\par
+		{\Large\itshape\textcolor{TitleColor}{\@subtitle}}\\[2\baselineskip]
+		{\large \@author}\par
 	\end{raggedleft}%
 	\vfill
 	\begin{center}
-		{\includegraphics[height=1.5cm]{\@affiliationlogo}}\\[\baselineskip]
-		{\bfseries\@institute}
+		{\large \@date}
 	\end{center}
+	\vspace*{\drop}
 	\null
 	\cleardoublepage
 }
