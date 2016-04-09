@@ -5,7 +5,8 @@ This package provides LateX templates with HMGU corporate design for letter, pre
 ## Usage
 All examples can be compiled with either following commands:
 ```
-latex or pdflatex commands
+latex
+pdflatex
 ```
 
 ### Prerequisites
