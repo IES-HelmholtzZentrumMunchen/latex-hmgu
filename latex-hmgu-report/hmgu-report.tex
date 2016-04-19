@@ -1,11 +1,15 @@
 % !TeX encoding = UTF-8
-% !TeX spellcheck = en_GB
+% !TeX spellcheck = en_US
 %
 % embryo_nuclei_analysis.tex
 % Activity report on the embryo nuclei analysis work.
 % Julien Pontabry
 % May 2015
 %
+
+
+% Class
+\documentclass[a4paper,12pt,oneside]{report}
 
 % Structuring file
 \input{hmgu-report.sty}
@@ -20,4 +24,52 @@
 \begin{document}
 	\maketitle
 
+	\chapter{Introduction}
+		This (very) short document shows how to use the HMGU corporate design for reports with \LaTeX{}. It uses the standard report class and allows to quickly presents research within a scientific report. The requisites and the available commands are listed in the following sections.
+		
+		Reports must be compiled with \texttt{latex} command: bad output results will occur with other commands (e.g. \texttt{pdflatex}), especially on colors in chapter titles.
+		
+		This document corresponds to the version in date of \today. For all additional information, for bug report, or for suggestion, please send an email to \texttt{\url{julien.pontabry@helmholtz-muenchen.de}}.
+	
+	\chapter{Requisites}
+			In order to get a function template, the following packages are mandatory:
+			\begin{itemize}
+				\item \texttt{geometry} to manage the geometry of the page;
+				\item \texttt{babel} to get correct translations (english);
+				\item \texttt{ifdraft} to know if the user switch to draft and then not plotting loaded data;
+				\item \texttt{verbatim} to display code;
+				\item \texttt{lmodern} to have modern font typefaces;
+				\item \texttt{microtype} to improve the typography of the document;
+				\item \texttt{color} to have colors;
+				\item \texttt{url} to be able to display URLs and breaking them when needed;
+				\item \texttt{enumitem} to have custom enumerations;
+				\item \texttt{titlesec} for customizing the chapter titles;
+				\item \texttt{fix-cm} to allow for directly change some fonts;
+				\item \texttt{fancyhdr} for custom headers and footers;
+				\item \texttt{graphicx} for the display of images and logos;
+				\item \texttt{caption} and \texttt{subcaption} to have custom caption for figures and subfigures;
+				\item \texttt{tikz} for drawing (the tikz library \texttt{plotmarks} is required);
+				\item \texttt{multirow} to allow multiple rows in tables;
+				\item \texttt{pgfplotstable} to manage data tables loaded directly from CSV files;
+				\item \texttt{pgfplots} to plot data directly from CSV files (pgfplots libraries \texttt{units} and \texttt{groupplots} are required as well);
+				\item AMS packages for beautiful equations (\texttt{amsmath}, \texttt{amssymb}, \texttt{amsfonts}, etc.);
+				\item \texttt{xfrac} to get nice fractions display;
+				\item \texttt{booktabs}, \texttt{array} and \texttt{siunitx} for number and units formating;
+				\item \texttt{algorithm2e} to have nice algorithms;
+				\item \texttt{biblatex} for bibliography management;
+				\item \texttt{hyperref} for PDF formating;
+				\item \texttt{breakurl} for nice URLs formating within a PDF;
+				\item \texttt{cleveref} for cross-references management.
+			\end{itemize}
+
+			To get a proper output of this document, the file \textit{hmgu-report.sty} is mandatory because it contains all the command and formating instructions. The image file \textit{hmgu\_color\_englisch.eps} is necessary as well for the logo.
+	
+	\chapter{Available commands}
+		In addition to all \LaTeX{} commands used for writing a report, the following are available:
+		\begin{itemize}
+			\item \verb|\subtitle| to write a subtitle on the first page;
+			\item \verb|\institute| to display the name of the institute on the first page;
+			\item \verb|\affiliationlogo| for the display of the logo of \emph{Helmholtz Zentrum München} on the first page;
+			\item all the commands coming with packages (e.g. \verb|\si| coming with \texttt{siunitx} for unit display).
+		\end{itemize}
 \end{document}
