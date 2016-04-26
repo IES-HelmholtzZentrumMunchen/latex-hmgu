@@ -324,33 +324,6 @@
 	\pgfplotstableclear{\findtablemintmp}
 }
 
-% Define styles for results tables
-\csvstyle{evaluation results}{
-	head to column names,
-	before reading = \centering\sisetup{
-		round-mode      = places,
-		round-precision = 2,
-		detect-weight,
-		detect-shape,
-		detect-mode},
-	tabular        = {lrrrr},	
-	table head     = \toprule{Image} & {CellProfiler} & {Farsight} & {ilastik} & {MINS}\\\midrule,
-	table foot     = \bottomrule
-}
-
-\csvstyle{evaluation results centred}{
-	head to column names,
-	before reading = \centering\sisetup{
-		round-mode      = places,
-		round-precision = 2,
-		detect-weight,
-		detect-shape,
-		detect-mode},
-	tabular        = {lcccc},	
-	table head     = \toprule{Image} & {CellProfiler} & {Farsight} & {ilastik} & {MINS}\\\midrule,
-	table foot     = \bottomrule
-}
-
 % ---- Plots ---------------------------------------------------------------------------------------
 
 \usepackage{pgfplots}
@@ -361,39 +334,6 @@
 
 \usepgfplotslibrary{units}
 \usepgfplotslibrary{groupplots}
-
-% Styles for plots
-\pgfplotsset{
-	comparison plots/.style = {
-		grid               = major,
-		xtick              = {1,2,3,4,5,6},
-		xticklabels        = {2C/cov.,4C/cov.,4C/drop,8C/cov.,8C/drop,Morula/cov.},
-		xticklabel style   = {rotate=45, anchor=north east},
-		y tick label style = {
-			/pgf/number format/.cd,
-			fixed,
-			fixed zerofill,
-			precision = 1,
-			/tikz/.cd
-		},
-		tick scale binop   = \times,
-	},
-	histogram plots/.style = {
-		grid           = none,
-		width          = 1.425\textwidth,
-		xmin           = 0,
-		xmax           = 255,
-		xlabel         = {},
-		x unit         = {},
-		xtick          = {0,255},
-		xticklabels    = {},
-		ymin           = 0,
-		ylabel         = {},
-		y unit         = {},
-		yticklabels    = {},
-		scaled y ticks = false,
-	}
-}
 
 % ---- Maths ---------------------------------------------------------------------------------------
 
