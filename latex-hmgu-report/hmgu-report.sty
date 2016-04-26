@@ -332,6 +332,27 @@
 	compat = newest,
 }
 
+% Cycle style for line plots
+\pgfplotscreateplotcyclelist{hmgucyclestylecolor}{%
+	{blue,solid},
+	{red,solid},
+	{green!60!black,solid},
+	{blue,dashed},
+	{red,dashed},
+	{green!60!black,dashed},
+	{blue,dasheddotted},
+	{red,dasheddotted},
+	{green!60!black,dasheddotted},
+}
+
+\pgfplotscreateplotcyclelist{hmgucyclestyleblack}{%
+	{black,solid},
+	{black,dashed},
+	{black,dotted,thick},
+	{black,dashdotted},
+	{black,dashdotdotted},
+}
+
 \usepgfplotslibrary{units}
 \usepgfplotslibrary{groupplots}
 
