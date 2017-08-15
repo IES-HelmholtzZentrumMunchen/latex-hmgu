@@ -63,7 +63,7 @@
 \usepackage[utf8]{inputenc}
 
 % Output encoding (for accentuated characters)
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 
 % For modern font
 \usepackage{lmodern}
@@ -72,7 +72,7 @@
 \usepackage{microtype}
 
 % For text colouring
-\usepackage{color}
+\usepackage{xcolor}
 
 \definecolor{TitleColor}{RGB}{39,63,100}
 \definecolor{RulesColor}{RGB}{42,137,188}
@@ -148,10 +148,10 @@
 \pagestyle{fancy}
 
 \renewcommand{\chaptermark}[1]{%
-	\markboth{\thechapter.\ \textsc{#1}}{}}
+	\markboth{\thechapter.\ #1}{}}
 
 \makeatletter
-\lhead{\nouppercase{\small \leftmark}}
+\lhead{\nouppercase{\small \textsc{\leftmark}}}
 \chead{}
 \rhead{}
 \lfoot{}
@@ -164,7 +164,7 @@
 % ---- Figures -------------------------------------------------------------------------------------
 
 % Images
-\usepackage[dvips]{graphicx}
+\usepackage{graphicx}
 
 % Captions and multiple figures
 \usepackage{caption}
@@ -186,6 +186,7 @@
 	labelformat     = simple,
 	labelsep        = period,
 	position        = bottom,
+    subrefformat    = parens,
 }
 
 \captionsetup[table]{
@@ -217,6 +218,7 @@
 
 % Drawing
 \usepackage{tikz}
+\usetikzlibrary{automata}
 \usetikzlibrary{plotmarks}
 
 % ---- Tables --------------------------------------------------------------------------------------
@@ -230,7 +232,7 @@
 
 \pgfplotstableset{
 	fixed zerofill                 = true,
-	col sep                        = comma,
+	% col sep                        = comma,
 	header                         = true,
 	format                         = auto,
 	set thousands separator        = {$\,$},
@@ -355,6 +357,17 @@
 
 \usepgfplotslibrary{units}
 \usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{fillbetween}
+% \usepgfplotslibrary{external}
+
+% ---- Graphs --------------------------------------------------------------------------------------
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{external}
+
+% Tree styles
+\tikzstyle{treenode} = [align=center, inner sep=0pt, text centered, font=\sffamily, circle, text width=1.5em, draw=black]
 
 % ---- Maths ---------------------------------------------------------------------------------------
 
@@ -389,6 +402,9 @@
 \DeclareSIUnit\pixels{pixels}
 \DeclareSIUnit\voxels{voxels}
 
+% Nomenclature
+\usepackage{nomencl}
+
 % Useful shortcuts
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -400,6 +416,7 @@
 \newcommand{\NnN}[1]{\frac{\N}{#1\N}}
 \newcommand{\NnNtext}[1]{\sfrac{\N}{#1\N}}
 \newcommand{\Matrices}[2]{\mathcal{M}_{#1 \times #2}}
+\DeclareMathOperator{\tr}{tr}
 
 % ---- Algorithms ----------------------------------------------------------------------------------
 
@@ -418,7 +435,8 @@
 	uniquename   = false,
 	uniquelist   = false,
 	doi          = false,
-	url          = false
+	url          = false,
+    firstinits   = true,
 ]{biblatex}
 
 \setlength{\bibitemsep}{5pt}
@@ -452,5 +470,8 @@
 
 % Referencing
 \usepackage[noabbrev]{cleveref}
+
+% Overpic
+\usepackage[percent]{overpic}
 
 \endinput
